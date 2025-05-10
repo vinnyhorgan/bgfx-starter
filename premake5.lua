@@ -80,6 +80,10 @@ project "bgfx-starter"
   filter { "toolset:msc*", "configurations:release" }
     linkoptions { "/ENTRY:mainCRTStartup" }
 
+  filter { "system:windows", "toolset:gcc" }
+    includedirs { "vendor/bx/include/compat/mingw" }
+    links { "gdi32" }
+
   filter "configurations:debug"
     defines { "DEBUG", "BX_CONFIG_DEBUG=1" }
     symbols "on"
