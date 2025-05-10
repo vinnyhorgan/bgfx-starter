@@ -7,3 +7,7 @@
 [submodule "vendor/bgfx"]
 	path = vendor/bgfx
 	url = https://github.com/bkaradzic/bgfx.git
+[submodule "vendor/glfw"]
+	path = vendor/glfw
+	url = https://github.com/mmozeiko/glfw.git
+	branch = unblock_events_windows_move_resize
