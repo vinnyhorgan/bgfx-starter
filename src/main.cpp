@@ -7,14 +7,16 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#ifdef BX_PLATFORM_WINDOWS
+#if BX_PLATFORM_WINDOWS
 #define GLFW_EXPOSE_NATIVE_WIN32
+#elif BX_PLATFORM_LINUX
+#define GLFW_EXPOSE_NATIVE_X11
 #endif
 
 #include <GLFW/glfw3native.h>
 
 // dark title bar
-#ifdef BX_PLATFORM_WINDOWS
+#if BX_PLATFORM_WINDOWS
 #include <dwmapi.h>
 
 #ifndef DWMWA_USE_IMMERSIVE_DARK_MODE
@@ -44,7 +46,7 @@ int main(int argc, char** argv) {
     return 1;
   }
 
-#ifdef _WIN32
+#if BX_PLATFORM_WINDOWS
   HWND hwnd = glfwGetWin32Window(window);
   BOOL dark = TRUE;
   DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, &dark, sizeof(dark));
@@ -56,6 +58,9 @@ int main(int argc, char** argv) {
 
 #if BX_PLATFORM_WINDOWS
   init.platformData.nwh = glfwGetWin32Window(window);
+#elif BX_PLATFORM_LINUX
+  init.platformData.ndt = glfwGetX11Display();
+  init.platformData.nwh = (void*)glfwGetX11Window(window);
 #endif
 
   int width, height;

@@ -58,6 +58,8 @@ project "bgfx-starter"
     "vendor/bgfx/include",
     "vendor/bgfx/3rdparty",
     "vendor/bgfx/3rdparty/khronos",
+    "vendor/bgfx/3rdparty/directx-headers/include",
+    "vendor/bgfx/3rdparty/directx-headers/include/wsl/stubs",
     "vendor/bgfx/3rdparty/directx-headers/include/directx",
 
     -- glfw
@@ -83,6 +85,10 @@ project "bgfx-starter"
   filter { "system:windows", "toolset:gcc" }
     includedirs { "vendor/bx/include/compat/mingw" }
     links { "gdi32" }
+
+  filter { "system:linux" }
+    defines { "_GLFW_X11" }
+    includedirs { "vendor/bx/include/compat/linux" }
 
   filter "configurations:debug"
     defines { "DEBUG", "BX_CONFIG_DEBUG=1" }
