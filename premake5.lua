@@ -66,6 +66,7 @@ project "bgfx-starter"
 
   filter "system:windows"
     defines { "_GLFW_WIN32" }
+    files { "assets/res.rc" }
     links { "dwmapi" }
 
   filter { "system:windows", "configurations:release" }
