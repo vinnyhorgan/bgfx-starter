@@ -1,0 +1,9 @@
+[submodule "vendor/bx"]
+	path = vendor/bx
+	url = https://github.com/bkaradzic/bx.git
+[submodule "vendor/bimg"]
+	path = vendor/bimg
+	url = https://github.com/bkaradzic/bimg.git
+[submodule "vendor/bgfx"]
+	path = vendor/bgfx
+	url = https://github.com/bkaradzic/bgfx.git
