@@ -10,7 +10,15 @@
 #if BX_PLATFORM_WINDOWS
 #define GLFW_EXPOSE_NATIVE_WIN32
 #elif BX_PLATFORM_LINUX
+
+#ifdef _GLFW_X11
 #define GLFW_EXPOSE_NATIVE_X11
+#endif
+
+#ifdef _GLFW_WAYLAND
+#define GLFW_EXPOSE_NATIVE_WAYLAND
+#endif
+
 #endif
 
 #include <GLFW/glfw3native.h>
@@ -63,8 +71,18 @@ int main(int argc, char** argv) {
 #if BX_PLATFORM_WINDOWS
   init.platformData.nwh = glfwGetWin32Window(window);
 #elif BX_PLATFORM_LINUX
+
+#ifdef _GLFW_X11
+  init.platformData.nwh = (void*)uintptr_t(glfwGetX11Window(window));
   init.platformData.ndt = glfwGetX11Display();
-  init.platformData.nwh = (void*)glfwGetX11Window(window);
+#endif
+
+#ifdef _GLFW_WAYLAND
+  init.platformData.nwh = glfwGetWaylandWindow(window);
+  init.platformData.ndt = glfwGetWaylandDisplay();
+  init.platformData.type = bgfx::NativeWindowHandleType::Wayland;
+#endif
+
 #endif
 
   int width, height;

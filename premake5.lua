@@ -3,6 +3,11 @@ workspace "bgfx-starter"
   architecture "x64"
   location "build"
 
+newoption {
+  trigger = "use-wayland",
+  description = "use wayland instead of x11",
+}
+
 project "bgfx-starter"
   kind "ConsoleApp"
   language "C++"
@@ -86,13 +91,19 @@ project "bgfx-starter"
     links { "gdi32" }
 
   filter { "system:linux" }
-    defines { "_GLFW_X11" }
-
     includedirs {
       "vendor/bx/include/compat/linux",
       "vendor/bgfx/3rdparty/directx-headers/include",
       "vendor/bgfx/3rdparty/directx-headers/include/wsl/stubs",
     }
+
+  filter { "system:linux", "options:use-wayland" }
+    defines { "_GLFW_WAYLAND" }
+    includedirs { "vendor/wl" }
+    excludes { "vendor/glfw/src/xkb_unicode.c" }
+
+  filter { "system:linux", "not options:use-wayland" }
+    defines { "_GLFW_X11" }
 
   filter "configurations:debug"
     defines { "DEBUG", "BX_CONFIG_DEBUG=1" }
