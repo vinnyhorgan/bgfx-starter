@@ -5,6 +5,7 @@
 </p>
 
 A minimal template to get started using the cross platform graphics library [bgfx](https://github.com/bkaradzic/bgfx).
+By combining bgfx with a windowing library such as [glfw](https://github.com/glfw/glfw) we can create graphical applications which run on all systems using the best graphics api available.
 
 ## Features
 
@@ -79,6 +80,11 @@ Then:
 ```
 ./scripts/build_linux.sh
 ```
+
+## TODO
+
+- [ ] Add MacOS support
+- [ ] Fix any issues
 
 ## Credits
 
