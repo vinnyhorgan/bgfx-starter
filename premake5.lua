@@ -13,6 +13,8 @@ project "bgfx-starter"
   language "C++"
   cppdialect "C++17"
   staticruntime "on"
+  exceptionhandling "off"
+  rtti "off"
 
   targetdir "%{wks.location}/bin/%{cfg.buildcfg}"
   objdir "%{wks.location}/obj/%{cfg.buildcfg}"
