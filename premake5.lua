@@ -72,6 +72,9 @@ project "bgfx-starter"
 
     -- glm
     "vendor/glm",
+
+    -- stb
+    "vendor/stb",
   }
 
   filter "system:windows"
