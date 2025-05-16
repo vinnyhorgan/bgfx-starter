@@ -11,3 +11,6 @@
 	path = vendor/glfw
 	url = https://github.com/mmozeiko/glfw.git
 	branch = unblock_events_windows_move_resize
+[submodule "vendor/glm"]
+	path = vendor/glm
+	url = https://github.com/g-truc/glm.git

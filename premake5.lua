@@ -69,6 +69,9 @@ project "bgfx-starter"
 
     -- glfw
     "vendor/glfw/include",
+
+    -- glm
+    "vendor/glm",
   }
 
   filter "system:windows"
