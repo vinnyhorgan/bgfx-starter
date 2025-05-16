@@ -12,10 +12,11 @@ By combining bgfx with a windowing library such as [glfw](https://github.com/glf
 - Simple and clean
 - Up to date
 - Easy build system
+- Includes common utilities
 
 ## Requirements
 
-You need [Premake](https://premake.github.io) in your PATH.
+You need [Premake](https://premake.github.io) in your ```PATH```.
 
 For Windows you can use either [MSVC](https://visualstudio.microsoft.com) or [MinGW](https://github.com/skeeto/w64devkit).
 For Linux you need standard build tools.
@@ -41,7 +42,7 @@ premake5 vs2022
 ```
 
 Then you can open the generated solution using Visual Studio.
-If you have msbuild in your PATH, then you can just run:
+If you have ```msbuild``` in your ```PATH```, then you can just run:
 
 ```
 .\scripts\build_msvc.bat
@@ -92,6 +93,8 @@ Thanks to all the following amazing projects:
 
 - [bgfx](https://github.com/bkaradzic/bgfx)
 - [glfw](https://github.com/glfw/glfw)
+- [glm](https://github.com/g-truc/glm)
+- [stb](https://github.com/nothings/stb)
 - [icon](https://www.flaticon.com/free-icon/letter-b_3541184?term=b&page=1&position=38&origin=tag&related_id=3541184)
 
 This template actually uses a fork of glfw that fixes event blocking on Windows:
