@@ -40,6 +40,7 @@ project "bgfx-starter"
     "vendor/bgfx/src/*.cpp",
 
     -- glfw
+    "vendor/glfw/include/GLFW/*.h",
     "vendor/glfw/src/*.h",
     "vendor/glfw/src/*.c",
   }
@@ -88,7 +89,7 @@ project "bgfx-starter"
   filter { "toolset:msc*" }
     defines { "_CRT_SECURE_NO_WARNINGS" }
     includedirs { "vendor/bx/include/compat/msvc" }
-    buildoptions { "/Zc:__cplusplus", "/Zc:preprocessor" }
+    buildoptions { "/Zc:__cplusplus", "/Zc:preprocessor", "/MP" }
     disablewarnings { "4244" }
 
   filter { "toolset:msc*", "configurations:release" }

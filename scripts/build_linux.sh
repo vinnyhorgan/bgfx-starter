@@ -11,4 +11,4 @@ if [ "$1" != "debug" ] && [ "$1" != "release" ]; then
 fi
 
 cd build
-make config=$1
+make config=$1 -j4
