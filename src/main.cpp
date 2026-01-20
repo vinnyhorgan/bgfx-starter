@@ -19,6 +19,8 @@
 #define GLFW_EXPOSE_NATIVE_WAYLAND
 #endif
 
+#elif BX_PLATFORM_OSX
+#define GLFW_EXPOSE_NATIVE_COCOA
 #endif
 
 #include <GLFW/glfw3native.h>
@@ -83,6 +85,8 @@ int main(int argc, char** argv) {
   init.platformData.type = bgfx::NativeWindowHandleType::Wayland;
 #endif
 
+#elif BX_PLATFORM_OSX
+  init.platformData.nwh = glfwGetCocoaWindow(window);
 #endif
 
   int width, height;

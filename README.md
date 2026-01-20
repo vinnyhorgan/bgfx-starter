@@ -82,9 +82,17 @@ Then:
 ./scripts/build_linux.sh
 ```
 
+### macOS
+
+On macOS you can run the provided build script which will handle project generation and building:
+
+```bash
+./scripts/build_macos.sh
+```
+
 ## TODO
 
-- [ ] Add MacOS support
+- [x] Add macOS support
 - [ ] Fix any issues
 
 ## Credits

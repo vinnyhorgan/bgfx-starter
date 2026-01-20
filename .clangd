@@ -1,0 +1,19 @@
+CompileFlags:
+  Add: [
+    -Ivendor/bx/include,
+    -Ivendor/bgfx/include,
+    -Ivendor/bimg/include,
+    -Ivendor/glfw/include,
+    -Ivendor/glm,
+    -Ivendor/stb,
+    -Ivendor/bgfx/3rdparty,
+    -Ivendor/bx/3rdparty,
+    -Ivendor/bx/include/compat/osx,
+    -D__APPLE__=1,
+    -D_GLFW_COCOA=1,
+    -DBX_PLATFORM_OSX=1
+  ]
+  Compiler: clang++
+
+Index:
+  Background: true

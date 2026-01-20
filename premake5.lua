@@ -1,3 +1,5 @@
+include "scripts/premake-export-compile-commands.lua"
+
 workspace "bgfx-starter"
   configurations { "debug", "release" }
   architecture "x64"
@@ -38,11 +40,13 @@ project "bgfx-starter"
     "vendor/bgfx/include/bgfx/**.h",
     "vendor/bgfx/src/*.h",
     "vendor/bgfx/src/*.cpp",
+    "vendor/bgfx/src/*.mm",
 
     -- glfw
     "vendor/glfw/include/GLFW/*.h",
     "vendor/glfw/src/*.h",
     "vendor/glfw/src/*.c",
+    "vendor/glfw/src/*.m",
   }
 
   excludes {
@@ -51,6 +55,7 @@ project "bgfx-starter"
 
     -- bgfx
     "vendor/bgfx/src/amalgamated.cpp",
+    "vendor/bgfx/src/amalgamated.mm",
   }
 
   includedirs {
@@ -113,6 +118,18 @@ project "bgfx-starter"
 
   filter { "system:linux", "not options:use-wayland" }
     defines { "_GLFW_X11" }
+
+  filter "system:macosx"
+    includedirs { "vendor/bx/include/compat/osx" }
+    defines { "_GLFW_COCOA" }
+    links { "Cocoa.framework", "QuartzCore.framework", "IOKit.framework", "CoreFoundation.framework", "CoreVideo.framework", "Metal.framework", "AppKit.framework" }
+    buildoptions { "-Wno-deprecated-declarations" }
+
+  filter { "system:macosx", "files:**.cpp" }
+    compileas "Objective-C++"
+
+  filter { "system:macosx", "files:**.c" }
+    compileas "Objective-C"
 
   filter "configurations:debug"
     defines { "DEBUG", "BX_CONFIG_DEBUG=1" }
